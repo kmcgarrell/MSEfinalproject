@@ -206,7 +206,7 @@ void loop()
           counter++;
         }*/
           NumTurns++;
-          if (NumTurns==3)
+          if (NumTurns==8)
           {
             servo_LeftMotor.writeMicroseconds(1500);
             servo_RightMotor.writeMicroseconds(1500);
@@ -590,13 +590,69 @@ break;
 
 
 
-case 7:
+
+ case 7:
 {
- Serial.println("case 7");
- while(1)
- {
-   
- }
+  //Serial.write("flip back");
+  servo_grab.writeMicroseconds(1200);
+  delay(1000); 
+
+  //Serial.write("drive to optium position"); 
+  servo_LeftMotor.writeMicroseconds(1650);
+  servo_RightMotor.writeMicroseconds(1650);
+  delay(1500);
+  servo_LeftMotor.writeMicroseconds(1500);
+  servo_RightMotor.writeMicroseconds(1500);
+
+
+  
+  //Serial.write("pick it up");
+  servo_grab.writeMicroseconds(2200);
+  delay(700);
+  servo_grab.writeMicroseconds(1500);
+  delay (1000);
+  servo_grab.writeMicroseconds(1100);
+  delay(700);
+  servo_grab.writeMicroseconds(1500);
+  delay(2000);
+
+  //Serial.write("swing and hit cube");
+ 
+  servo_armswing.writeMicroseconds(1500);
+  delay(600);
+  
+  //Serial.write("knocking off the cube");
+  servo_knock.write(180);
+  delay(2000);
+  servo_knock.write(120);
+  delay(700);
+  servo_knock.write(180);
+
+  //Serial.write("swing back");
+  servo_armswing.writeMicroseconds(2500);
+
+  //Serial.write("hardcode locating the cube");
+    //drive forward a bit
+    //servo_LeftMotor.writeMicroseconds(1620);
+    //servo_RightMotor.writeMicroseconds(1620);
+    //delay(800);
+    //turn a bit?
+    servo_LeftMotor.writeMicroseconds(1430);
+    servo_RightMotor.writeMicroseconds(1630);
+    delay(1200);
+    servo_LeftMotor.writeMicroseconds(1500);
+    servo_RightMotor.writeMicroseconds(1500);
+
+  //Serial.write("putting pyramid down");
+  servo_grab.writeMicroseconds(1900);
+  delay(800);
+  servo_grab.writeMicroseconds(1500);
+  delay (2000);
+  //end of case 7
+  
+  StateNum=8;
+  break;
+}
 }
 }
          
@@ -604,7 +660,7 @@ case 7:
     
     
       //end of switch statements
-  }
+  
 
   
 
